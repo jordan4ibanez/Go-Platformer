@@ -2,6 +2,6 @@ package test
 
 import "fmt"
 
-func testCode() {
+func TestCode() {
 	fmt.Println("this test worked!")
 }

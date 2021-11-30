@@ -1,12 +1,13 @@
 package main
 
-import "fmt"
-
-import "github.com/jordan4ibanez/Go-Platformer/src"
+import (
+	"fmt"
+	test "github.com/jordan4ibanez/Go-Platformer/src"
+)
 
 func main() {
 
-	fmt.Println("test")
+	fmt.Println("tet")
 
-	test.testCode()
+	test.TestCode()
 }
