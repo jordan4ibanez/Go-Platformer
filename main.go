@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	fmt.Println("tet")
+	fmt.Println("test")
 
 	test.TestCode()
 }
