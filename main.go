@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+import "github.com/jordan4ibanez/Go-Platformer/src"
+
 func main() {
-	fmt.Println("Oh hi")
+
+	fmt.Println("test")
+
+	test.testCode()
 }
