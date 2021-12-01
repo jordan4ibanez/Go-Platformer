@@ -14,6 +14,8 @@ func TestCode() {
 	X = rand.Float64() * 300
 	Y = rand.Float64() * 300
 
+	Y = Y
+
 	/*
 		if right && X <= 100 {
 			X++
