@@ -6,6 +6,8 @@ var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {50.0, 0.0}} //this must 
 
 var inertia [2][2]float64 = [2][2]float64{{0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
+var size [2][2]float64 = [2][2]float64{{20.0, 20.0}, {60.0, 20.0}} // X and Y - width and height
+
 /*
 Todo:
 
@@ -86,4 +88,32 @@ func SetInertiaX(index int, x float64) {
 
 func SetInertiaY(index int, y float64) {
 	inertia[index][1] = y
+}
+
+//size getters
+
+func GetSize(index int) [2]float64 {
+	return size[index]
+}
+
+func GetWidth(index int) float64 {
+	return size[index][0]
+}
+
+func GetHeight(index int) float64 {
+	return size[index][1]
+}
+
+//size setters
+
+func SetSize(index int, x float64, y float64) {
+	size[index] = [2]float64{x, y}
+}
+
+func SetWidth(index int, x float64) {
+	size[index][0] = x
+}
+
+func SetHeight(index int, y float64) {
+	size[index][1] = y
 }
