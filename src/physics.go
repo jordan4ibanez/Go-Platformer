@@ -4,6 +4,8 @@ import (
 	"math/rand"
 )
 
+const gravity float64 = 10
+
 var X float64 = 0
 var Y float64 = 0
 
