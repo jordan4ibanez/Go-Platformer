@@ -16,10 +16,8 @@ type Game struct{}
 
 func (g *Game) Update() error {
 
-	physics.TestCode()
-
-	deltaTime.CalculateDelta()
-
+	physics.RunPhysics(deltaTime.CalculateDelta())
+	
 	return nil
 }
 

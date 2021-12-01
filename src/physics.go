@@ -1,20 +1,22 @@
 package engine
 
-import (
-	"math/rand"
-)
+//"math/rand"
 
 const gravity float64 = 10
 
-var X float64 = 0
-var Y float64 = 0
+//var X float64 = 0
+//var Y float64 = 0
 
 //var right bool = true
 
-func TestCode() {
+func RunPhysics(delta float64) {
 
-	X = rand.Float64() * 300
-	Y = rand.Float64() * 300
+	//fmt.Println(ebiten.CurrentFPS())
+
+	//fmt.Println(delta)
+
+	//X = rand.Float64() * 300
+	//Y = rand.Float64() * 300
 
 	/*
 		if right && X <= 100 {
