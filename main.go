@@ -1,15 +1,15 @@
 package main
 
 import (
-	"image/color"
 	"log"
 
 	physics "github.com/jordan4ibanez/Go-Platformer/src"
 
 	deltaTime "github.com/jordan4ibanez/Go-Platformer/src"
 
+	render "github.com/jordan4ibanez/Go-Platformer/src"
+
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Game struct{}
@@ -24,8 +24,8 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	ebitenutil.DrawRect(screen, physics.X, physics.Y, 20, 20, color.White)
-	//ebitenutil.DebugPrint(screen, "Hello, World!")
+
+	render.DrawEntities(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
