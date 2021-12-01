@@ -6,6 +6,22 @@ var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {50.0, 0.0}} //this must 
 
 var inertia [2][2]float64 = [2][2]float64{{0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
+/*
+Todo:
+
+add ability to remove entities
+
+- auto shrink array to fit entities
+
+add ability for array to extend to accomodate more entities
+*/
+
+// a simple hack because these will be synced
+
+func GetNumberOfEntities() int {
+	return len(static)
+}
+
 //static getters and setters
 
 func GetStatic(index int) bool {
