@@ -5,11 +5,18 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-
-	entities "github.com/jordan4ibanez/Go-Platformer/src"
 )
+
+//cache reuse variables
+
+var currentPosition [2]float64 = [2]float64{0, 0}
 
 func DrawEntities(screen *ebiten.Image) {
 
-	ebitenutil.DrawRect(screen, 0, 0, 20, 20, color.White)
+	for i := 0; i < GetNumberOfEntities(); i++ {
+
+		currentPosition = GetPosition(i)
+
+		ebitenutil.DrawRect(screen, currentPosition[0], currentPosition[1], 20, 20, color.White)
+	}
 }
