@@ -17,6 +17,10 @@ func DrawEntities(screen *ebiten.Image) {
 
 		currentPosition = GetPosition(i)
 
-		ebitenutil.DrawRect(screen, currentPosition[0], currentPosition[1], 20, 20, color.White)
+		if GetStatic(i) {
+			ebitenutil.DrawRect(screen, currentPosition[0], currentPosition[1], 20, 20, color.White)
+		} else {
+			ebitenutil.DrawRect(screen, currentPosition[0], currentPosition[1], 20, 20, color.RGBA{255, 0, 0, 255})
+		}
 	}
 }
