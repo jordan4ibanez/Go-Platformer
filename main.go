@@ -6,6 +6,8 @@ import (
 
 	physics "github.com/jordan4ibanez/Go-Platformer/src"
 
+	deltaTime "github.com/jordan4ibanez/Go-Platformer/src"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
@@ -15,6 +17,8 @@ type Game struct{}
 func (g *Game) Update() error {
 
 	physics.TestCode()
+
+	deltaTime.CalculateDelta()
 
 	return nil
 }

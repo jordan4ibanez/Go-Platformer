@@ -1,11 +1,12 @@
-package deltaTime
+package engine
 
 import (
-	"fmt"
 	"time"
 )
 
 var oldTime float64 = float64(time.Now().Local().UTC().UnixMicro())
+
+var currentTime float64 = oldTime
 
 var deltaTime float64 = 0
 
@@ -13,10 +14,13 @@ func currTimeToUnix() float64 {
 	return float64(time.Now().Local().UTC().UnixMicro())
 }
 
-func calculateDelta() float64 {
-	deltaTime = oldTime - currTimeToUnix()
+func CalculateDelta() float64 {
 
-	fmt.Println(deltaTime)
+	currentTime = currTimeToUnix()
+
+	deltaTime = currentTime - oldTime
+
+	oldTime = currentTime
 
 	return deltaTime
 }
