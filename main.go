@@ -17,12 +17,11 @@ type Game struct{}
 func (g *Game) Update() error {
 
 	physics.RunPhysics(deltaTime.CalculateDelta())
-	
+
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-
 	render.DrawEntities(screen)
 }
 
@@ -32,6 +31,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 
 func main() {
 	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowResizable(true)
 	ebiten.SetWindowTitle("Hello, World!")
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
