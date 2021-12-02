@@ -17,6 +17,8 @@ var currentSize [2]float64 = [2]float64{0, 0}
 
 var player *ebiten.Image
 
+var playerLeft *ebiten.Image
+
 var flarple *ebiten.Image
 
 var tile *ebiten.Image
@@ -29,6 +31,12 @@ func GraphicsInitialization() {
 	var err error //gc swept
 
 	player, _, err = ebitenutil.NewImageFromFile("textures/go-gopher.png")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	playerLeft, _, err = ebitenutil.NewImageFromFile("textures/go-gopher-left.png")
 
 	if err != nil {
 		log.Fatal(err)
@@ -70,9 +78,15 @@ func DrawEntities(screen *ebiten.Image) {
 		imageManipulation.GeoM.Reset()
 
 		if i == 0 {
+
 			imageManipulation.GeoM.Translate((640/2)+(GetWidth(0)/2), (480/2)+(GetHeight(0)/2))
 			imageManipulation.GeoM.Scale(1, 1)
-			screen.DrawImage(player, imageManipulation)
+
+			if GetInertia(0)[0] >= 0 {
+				screen.DrawImage(player, imageManipulation)
+			} else {
+				screen.DrawImage(playerLeft, imageManipulation)
+			}
 		} else {
 
 			currentPosition = GetPosition(i)
@@ -82,8 +96,6 @@ func DrawEntities(screen *ebiten.Image) {
 			imageManipulation.GeoM.Translate(GetPositionX(i)+getCameraPositionX(), GetPositionY(i)+getCameraPositionY())
 			imageManipulation.GeoM.Scale(1, 1)
 			screen.DrawImage(flarple, imageManipulation)
-
-			//ebitenutil.DrawRect(screen, currentPosition[0], currentPosition[1], currentSize[0], currentSize[1], color.White)
 		}
 	}
 

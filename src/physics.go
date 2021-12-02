@@ -1,7 +1,5 @@
 package engine
 
-import "fmt"
-
 const gravity float64 = 10
 
 //cache hitters
@@ -174,7 +172,6 @@ func collisionDetectYMap(index int, workerX float64, workerY float64, inertiaY f
 						if exclusionAABB(workerX, workerY) {
 
 							if index == 0 {
-								fmt.Println("onground boid")
 								onGround = true
 							}
 							//fmt.Println("collide + x") //debug
