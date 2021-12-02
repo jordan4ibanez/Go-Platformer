@@ -4,7 +4,7 @@ const NE int = 4
 
 var static [NE]bool = [NE]bool{false, true, false, false} //if entity is static, it cannot move
 
-var position [NE][2]float64 = [NE][2]float64{{0.0, 0.0}, {26.0, 0.0}, {128.0, 32.0}, {200.0, 32.0}} //this must be defined inline for some reason
+var position [NE][2]float64 = [NE][2]float64{{0.0, 0.0}, {26.0, 0.0}, {256.0, 32.0}, {300.0, 32.0}} //this must be defined inline for some reason
 
 var inertia [NE][2]float64 = [NE][2]float64{{0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
