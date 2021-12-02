@@ -22,5 +22,9 @@ func CalculateDelta() float64 {
 
 	oldTime = currentTime
 
+	if deltaTime > 1 {
+		deltaTime = 1
+	}
+
 	return deltaTime
 }
