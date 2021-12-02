@@ -48,6 +48,20 @@ func GraphicsInitialization() {
 
 func DrawEntities(screen *ebiten.Image) {
 
+	imageManipulation.GeoM.Reset()
+
+	//map has be loaded inversely because data structure
+	for y := 0; y < GetMapHeight(); y++ {
+		for x := 0; x < GetMapLength(); x++ {
+			if GameMap[y][x] > 0 {
+				screen.DrawImage(tile, imageManipulation)
+			}
+			imageManipulation.GeoM.Translate(32, 0)
+		}
+
+		imageManipulation.GeoM.Translate(-32*float64(GetMapLength()), 32)
+	}
+
 	for i := 0; i < GetNumberOfEntities(); i++ {
 
 		imageManipulation.GeoM.Reset()
