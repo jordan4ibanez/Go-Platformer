@@ -1,5 +1,7 @@
 package engine
 
+import "fmt"
+
 //"math/rand"
 
 const gravity float64 = 10
@@ -11,9 +13,9 @@ const gravity float64 = 10
 
 func RunPhysics(delta float64) {
 
-	//fmt.Println(ebiten.CurrentFPS())
 
-	//fmt.Println(delta)
+
+	fmt.Println(delta)
 
 	//X = rand.Float64() * 300
 	//Y = rand.Float64() * 300
