@@ -1,12 +1,14 @@
 package engine
 
-var static [2]bool = [2]bool{false, true} //if entity is static, it cannot move
+const NE int = 4
 
-var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {26.0, 0.0}} //this must be defined inline for some reason
+var static [NE]bool = [NE]bool{false, true, false, false} //if entity is static, it cannot move
 
-var inertia [2][2]float64 = [2][2]float64{{0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
+var position [NE][2]float64 = [NE][2]float64{{0.0, 0.0}, {26.0, 0.0}, {128.0, 32.0}, {200.0, 32.0}} //this must be defined inline for some reason
 
-var size [2][2]float64 = [2][2]float64{{20.0, 32.0}, {32.0, 32.0}} // X and Y - width and height
+var inertia [NE][2]float64 = [NE][2]float64{{0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
+
+var size [NE][2]float64 = [NE][2]float64{{20.0, 32.0}, {32.0, 32.0}, {32.0, 32.0}, {32.0, 32.0}} // X and Y - width and height
 
 /*
 Todo:
