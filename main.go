@@ -1,7 +1,11 @@
 package main
 
 import (
+	"image"
 	"log"
+	"os"
+
+	_ "image/png"
 
 	physics "github.com/jordan4ibanez/Go-Platformer/src"
 
@@ -42,8 +46,17 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 }
 
 func main() {
-	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowSize(1920, 1080)
+	ebiten.SetWindowSizeLimits(680, 480, -1, -1)
 	ebiten.SetWindowResizable(true)
+
+	//this should probably handle errors but no one will play this game anyways
+	f, _ := os.Open("textures/flarple.png")
+	defer f.Close()
+	img, _, _ := image.Decode(f)
+	var test []image.Image = []image.Image{img}
+
+	ebiten.SetWindowIcon(test)
 	ebiten.SetWindowTitle("Go Flarple Terror 2")
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
