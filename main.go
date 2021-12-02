@@ -16,11 +16,15 @@ import (
 
 type Game struct{}
 
+var delta float64 = 0
+
 func (g *Game) Update() error {
 
-	control.PlayerControlInput()
+	delta = deltaTime.CalculateDelta()
 
-	physics.RunPhysics(deltaTime.CalculateDelta())
+	control.PlayerControlInput(delta)
+
+	physics.RunPhysics(delta)
 
 	return nil
 }
