@@ -1,6 +1,6 @@
 package engine
 
-const gravity float64 = -10
+const gravity float64 = 10
 
 //cache hitters
 var workerPosition [2]float64 = [2]float64{}
@@ -63,6 +63,8 @@ func collisionDetectX(index int, workerX float64, workerY float64, inertiaX floa
 func collisionDetectY(index int, workerX float64, workerY float64, inertiaY float64) float64 {
 
 	workerSize = GetSize(index)
+
+	onGround = false
 
 	//this is typed out twice because it is faster to check inertia X once rather than 1x amount of times
 	if inertiaY < 0 {
@@ -166,6 +168,10 @@ func collisionDetectYMap(index int, workerX float64, workerY float64, inertiaY f
 						workerSize2 = [2]float64{32, 32}
 
 						if exclusionAABB(workerX, workerY) {
+
+							if index == 0 {
+								onGround = true
+							}
 							//fmt.Println("collide + x") //debug
 							workerPosition[1] = workerPosition2[1] - workerSize[1] - 0.005
 							inertiaY = 0
@@ -185,8 +191,8 @@ func applyInertia(index int, dtime float64) {
 
 	workerInertia = GetInertia(index)
 
-	if workerInertia[1] < 10 {
-		workerInertia[1] = gravity * dtime
+	if workerInertia[1] < 50 {
+		workerInertia[1] += gravity * dtime
 	}
 
 	//move X
