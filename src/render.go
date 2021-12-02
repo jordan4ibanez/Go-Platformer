@@ -50,6 +50,8 @@ func DrawEntities(screen *ebiten.Image) {
 
 	imageManipulation.GeoM.Reset()
 
+	imageManipulation.GeoM.Translate(getCameraPositionX(), getCameraPositionY())
+
 	//map has be loaded inversely because data structure
 	for y := 0; y < GetMapHeight(); y++ {
 		for x := 0; x < GetMapLength(); x++ {
@@ -67,7 +69,7 @@ func DrawEntities(screen *ebiten.Image) {
 		imageManipulation.GeoM.Reset()
 
 		if i == 0 {
-			imageManipulation.GeoM.Translate(GetPositionX(0), GetPositionY(0))
+			imageManipulation.GeoM.Translate((640/2)+(GetWidth(0)/2), (480/2)+(GetHeight(0)/2))
 			imageManipulation.GeoM.Scale(1, 1)
 			screen.DrawImage(player, imageManipulation)
 		} else {
@@ -76,7 +78,7 @@ func DrawEntities(screen *ebiten.Image) {
 
 			currentSize = GetSize(i)
 
-			imageManipulation.GeoM.Translate(GetPositionX(i), GetPositionY(i))
+			imageManipulation.GeoM.Translate(GetPositionX(i) + getCameraPositionX(), GetPositionY(i)+getCameraPositionY())
 			imageManipulation.GeoM.Scale(1, 1)
 			screen.DrawImage(flarple, imageManipulation)
 

@@ -2,7 +2,7 @@ package engine
 
 var static [2]bool = [2]bool{false, true} //if entity is static, it cannot move
 
-var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {120.0, 120.0}} //this must be defined inline for some reason
+var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {26.0, 0.0}} //this must be defined inline for some reason
 
 var inertia [2][2]float64 = [2][2]float64{{0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
@@ -116,4 +116,14 @@ func SetWidth(index int, x float64) {
 
 func SetHeight(index int, y float64) {
 	size[index][1] = y
+}
+
+//this is a bolt on hack to move the camera with the player
+
+func getCameraPositionX() float64 {
+	return -(position[0][0] - (640 / 2) - (size[0][0] / 2))
+}
+
+func getCameraPositionY() float64 {
+	return -(position[0][1] - (480 / 2) - (size[0][1] / 2))
 }
