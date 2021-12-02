@@ -20,7 +20,11 @@ func applyInertia(index int, dtime float64) {
 
 func RunPhysics(delta float64) {
 
-	applyInertia(0, delta)
+	for i := 0; i < GetNumberOfEntities(); i++ {
+		if !GetStatic(i) {
+			applyInertia(0, delta)
+		}
+	}
 
 	//X = rand.Float64() * 300
 	//Y = rand.Float64() * 300

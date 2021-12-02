@@ -2,9 +2,9 @@ package engine
 
 var static [2]bool = [2]bool{false, true} //if entity is static, it cannot move
 
-var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {50.0, 0.0}} //this must be defined inline for some reason
+var position [2][2]float64 = [2][2]float64{{0.0, 4.0}, {50.0, 0.0}} //this must be defined inline for some reason
 
-var inertia [2][2]float64 = [2][2]float64{{1.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
+var inertia [2][2]float64 = [2][2]float64{{5, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
 var size [2][2]float64 = [2][2]float64{{20.0, 20.0}, {60.0, 20.0}} // X and Y - width and height
 
