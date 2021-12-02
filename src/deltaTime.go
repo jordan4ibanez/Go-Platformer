@@ -18,7 +18,7 @@ func CalculateDelta() float64 {
 
 	currentTime = currTimeToUnix()
 
-	deltaTime = (currentTime - oldTime) / 10000.0
+	deltaTime = (currentTime - oldTime) / 100000.0
 
 	oldTime = currentTime
 
