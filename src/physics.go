@@ -115,7 +115,7 @@ func applyInertia(index int, dtime float64) {
 
 	//detect Y
 
-	workerInertia[1] = collisionDetectX(index, workerPosition[0], workerPosition[1], workerInertia[1])
+	workerInertia[1] = collisionDetectY(index, workerPosition[0], workerPosition[1], workerInertia[1])
 
 	//set in memory
 
