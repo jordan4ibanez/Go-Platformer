@@ -6,7 +6,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-func playerControlInput() {
+func PlayerControlInput() {
 	if ebiten.IsKeyPressed(ebiten.KeyUp) {
 		fmt.Println("up is pressed")
 	}

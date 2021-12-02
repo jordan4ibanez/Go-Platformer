@@ -9,6 +9,8 @@ import (
 
 	render "github.com/jordan4ibanez/Go-Platformer/src"
 
+	control "github.com/jordan4ibanez/Go-Platformer/src"
+
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -16,7 +18,7 @@ type Game struct{}
 
 func (g *Game) Update() error {
 
-	control.playerControlInput()
+	control.PlayerControlInput()
 
 	physics.RunPhysics(deltaTime.CalculateDelta())
 
