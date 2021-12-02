@@ -1,6 +1,6 @@
 package engine
 
-const gravity float64 = 10
+const gravity float64 = -10
 
 //cache hitters
 var workerPosition [2]float64 = [2]float64{}
@@ -139,7 +139,6 @@ func collisionDetectXMap(index int, workerX float64, workerY float64, inertiaX f
 	return inertiaX
 }
 
-
 func collisionDetectYMap(index int, workerX float64, workerY float64, inertiaY float64) float64 {
 
 	workerTile = [2]int{int(workerX / 32), int(workerY / 32)}
@@ -159,7 +158,7 @@ func collisionDetectYMap(index int, workerX float64, workerY float64, inertiaY f
 
 						if exclusionAABB(workerX, workerY) {
 							workerPosition[1] = workerPosition2[1] + workerSize2[1] + 0.005
-							inertiaY= 0
+							inertiaY = 0
 						}
 					} else if inertiaY > 0 {
 
@@ -185,6 +184,10 @@ func applyInertia(index int, dtime float64) {
 	workerPosition = GetPosition(index)
 
 	workerInertia = GetInertia(index)
+
+	if workerInertia[1] < 10 {
+		workerInertia[1] = gravity * dtime
+	}
 
 	//move X
 
