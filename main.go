@@ -18,6 +18,10 @@ type Game struct{}
 
 var delta float64 = 0
 
+func init() {
+	render.GraphicsInitialization()
+}
+
 func (g *Game) Update() error {
 
 	delta = deltaTime.CalculateDelta()
@@ -40,7 +44,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 func main() {
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowResizable(true)
-	ebiten.SetWindowTitle("Hello, World!")
+	ebiten.SetWindowTitle("Go Flarple Terror 2")
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
 	}
