@@ -16,6 +16,8 @@ type Game struct{}
 
 func (g *Game) Update() error {
 
+	control.playerControlInput()
+
 	physics.RunPhysics(deltaTime.CalculateDelta())
 
 	return nil
