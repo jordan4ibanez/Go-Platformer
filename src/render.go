@@ -18,12 +18,14 @@ var player *ebiten.Image
 
 var flarple *ebiten.Image
 
+var tile *ebiten.Image
+
 var imageManipulation = &ebiten.DrawImageOptions{}
 
 //
 
 func GraphicsInitialization() {
-	var err error
+	var err error //gc swept
 
 	player, _, err = ebitenutil.NewImageFromFile("textures/go-gopher.png")
 
@@ -32,6 +34,12 @@ func GraphicsInitialization() {
 	}
 
 	flarple, _, err = ebitenutil.NewImageFromFile("textures/flarple.png")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tile, _, err = ebitenutil.NewImageFromFile("textures/tile.png")
 
 	if err != nil {
 		log.Fatal(err)
