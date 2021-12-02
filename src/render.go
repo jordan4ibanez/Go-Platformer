@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"fmt"
 	_ "image/png"
 	"log"
 
@@ -78,7 +79,7 @@ func DrawEntities(screen *ebiten.Image) {
 
 			currentSize = GetSize(i)
 
-			imageManipulation.GeoM.Translate(GetPositionX(i) + getCameraPositionX(), GetPositionY(i)+getCameraPositionY())
+			imageManipulation.GeoM.Translate(GetPositionX(i)+getCameraPositionX(), GetPositionY(i)+getCameraPositionY())
 			imageManipulation.GeoM.Scale(1, 1)
 			screen.DrawImage(flarple, imageManipulation)
 
@@ -89,4 +90,6 @@ func DrawEntities(screen *ebiten.Image) {
 	//screen.DrawImage(player, nil)
 
 	//ebiten.SetWindowTitle(fmt.Sprintf("Hello, World! %v", CalculateFPS())) this basically chops the FPS down by 25-ish percent
+
+	ebitenutil.DebugPrint(screen, fmt.Sprint(onGround))
 }
