@@ -6,7 +6,7 @@ var position [2][2]float64 = [2][2]float64{{0.0, 0.0}, {120.0, 120.0}} //this mu
 
 var inertia [2][2]float64 = [2][2]float64{{0.0, 0.0}, {0.0, 0.0}} //this must be defined inline for some reason
 
-var size [2][2]float64 = [2][2]float64{{20.0, 32.0}, {20.0, 20.0}} // X and Y - width and height
+var size [2][2]float64 = [2][2]float64{{20.0, 32.0}, {32.0, 32.0}} // X and Y - width and height
 
 /*
 Todo:
