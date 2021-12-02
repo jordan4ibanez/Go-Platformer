@@ -1,21 +1,26 @@
 package engine
 
-import "fmt"
-
-//"math/rand"
-
 const gravity float64 = 10
 
-//var X float64 = 0
-//var Y float64 = 0
+var workerPosition [2]float64 = [2]float64{}
+var workerInertia [2]float64 = [2]float64{}
 
-//var right bool = true
+func applyInertia(index int, dtime float64) {
+	workerPosition = GetPosition(index)
+
+	workerInertia = GetInertia(index)
+
+	workerPosition[0] = workerPosition[0] + (workerInertia[0] * dtime)
+	//collision detect X goes here
+	workerPosition[1] = workerPosition[1] + (workerInertia[1] * dtime)
+	//collision detect Y goes here
+
+	SetPosition(index, workerPosition[0], workerPosition[1])
+}
 
 func RunPhysics(delta float64) {
 
-
-
-	fmt.Println(delta)
+	applyInertia(0, delta)
 
 	//X = rand.Float64() * 300
 	//Y = rand.Float64() * 300
