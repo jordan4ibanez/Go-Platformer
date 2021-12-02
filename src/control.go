@@ -1,6 +1,9 @@
 package engine
 
 import (
+	"fmt"
+	"math"
+
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -13,6 +16,8 @@ var downKey bool = false
 var leftKey bool = false
 var rightKey bool = false
 
+var onGround bool = false
+
 var playerInertia [2]float64 = [2]float64{}
 
 func PlayerControlInput(dtime float64) {
@@ -24,63 +29,39 @@ func PlayerControlInput(dtime float64) {
 
 	playerInertia = GetInertia(0)
 
-	/*
-		//X axis
-		if leftKey && !rightKey {
-			if playerInertia[0] > -maxPlayerSpeed {
-				playerInertia[0] -= (dtime / 2)
-			}
-
-			if playerInertia[0] < -maxPlayerSpeed {
-				playerInertia[0] = -maxPlayerSpeed
-			}
-		} else if !leftKey && rightKey {
-			if playerInertia[0] < maxPlayerSpeed {
-				playerInertia[0] += (dtime / 2)
-			}
-
-			if playerInertia[0] > maxPlayerSpeed {
-				playerInertia[0] = maxPlayerSpeed
-			}
-		} else {
-
-			//slow down - smoothly
-			playerInertia[0] += -playerInertia[0] * (deltaTime / 4)
-
-			//stop jittering
-			if math.Abs(playerInertia[0]) < 0.0005 {
-				playerInertia[0] = 0
-			}
+	//X axis
+	if leftKey && !rightKey {
+		if playerInertia[0] > -maxPlayerSpeed {
+			playerInertia[0] -= (dtime)
 		}
 
-		//Y axis
-		if upKey && !downKey {
-			if playerInertia[1] > -maxPlayerSpeed {
-				playerInertia[1] -= (dtime / 2)
-			}
-
-			if playerInertia[1] < -maxPlayerSpeed {
-				playerInertia[1] = -maxPlayerSpeed
-			}
-		} else if !upKey && downKey {
-			if playerInertia[1] < maxPlayerSpeed {
-				playerInertia[1] += (dtime / 2)
-			}
-
-			if playerInertia[1] > maxPlayerSpeed {
-				playerInertia[1] = maxPlayerSpeed
-			}
-		} else {
-
-			//slow down - smoothly
-			playerInertia[1] += -playerInertia[1] * (deltaTime / 4)
-
-			//stop jittering
-			if math.Abs(playerInertia[1]) < 0.0005 {
-				playerInertia[1] = 0
-			}
+		if playerInertia[0] < -maxPlayerSpeed {
+			playerInertia[0] = -maxPlayerSpeed
 		}
-	*/
+	} else if !leftKey && rightKey {
+		if playerInertia[0] < maxPlayerSpeed {
+			playerInertia[0] += (dtime)
+		}
+
+		if playerInertia[0] > maxPlayerSpeed {
+			playerInertia[0] = maxPlayerSpeed
+		}
+	} else {
+
+		//slow down - smoothly
+		playerInertia[0] += -playerInertia[0] * (deltaTime / 2)
+
+		//stop jittering
+		if math.Abs(playerInertia[0]) < 0.0005 {
+			playerInertia[0] = 0
+		}
+	}
+
+	//jump
+	if onGround && upKey {
+		fmt.Println("jump!")
+		playerInertia[1] = -50
+	}
 
 	SetInertia(0, playerInertia[0], playerInertia[1])
 }
